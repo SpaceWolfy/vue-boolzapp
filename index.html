@@ -34,13 +34,13 @@
 
             <!-- Actions -->
             <div class="my-actions">
-              <div class="my-action-icon">
+              <div class="my-action-icon icon-hover">
                 <i class="fas fa-circle-notch"></i>
               </div>
-              <div class="my-action-icon">
+              <div class="my-action-icon icon-hover">
                 <i class="fas fa-comment-alt"></i>
               </div>
-              <div class="my-action-icon">
+              <div class="my-action-icon icon-hover">
                 <i class="fas fa-ellipsis-v"></i>
               </div>
             </div>
@@ -98,7 +98,70 @@
           <!--  -->
         </div>
 
-        <div class="display-chat"></div>
+        <div class="display-chat">
+          <!-- Header chat -->
+          <header class="user-info">
+            <div class="my-info-cont">
+              <img src="img/avatar_1.jpg" alt="" class="personal-avatar" />
+              <div class="chat-info-person">
+                <div class="contact-name-chat">Michele</div>
+                <div class="last-access">Ultimo accesso oggi alle</div>
+              </div>
+            </div>
+
+            <!-- Actions - chat -->
+            <div class="my-actions">
+              <div class="my-action-icon icon-hover">
+                <i class="fas fa-search"></i>
+              </div>
+              <div class="my-action-icon icon-hover">
+                <i class="fas fa-paperclip"></i>
+              </div>
+              <div class="my-action-icon icon-hover">
+                <i class="fas fa-ellipsis-v"></i>
+              </div>
+            </div>
+            <!--  -->
+          </header>
+
+          <!-- Right Side Cont -->
+          <div class="chat-container">
+            <div class="in-chat">
+              <div class="right-side">
+                <div class="msg-green">
+                  Ciao sono Samuel
+                  <div class="date">19/01/22 - 00:12</div>
+                </div>
+                <div class="msg-green">
+                  Come stai?
+                  <div class="date">19/01/22 - 00:12</div>
+                </div>
+              </div>
+              <div class="left-side">
+                <div class="msg-white">
+                  Ciao Samuel, sono Mich, sto bene! Tu invece?
+                  <div class="date">19/01/22 - 00:12</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Message -->
+          <div class="message-bar">
+            <div class="emojis icon-hover">
+              <i class="far fa-smile"></i>
+            </div>
+            <input
+              class="message-text"
+              type="text"
+              placeholder="Scrivi un messaggio"
+            />
+            <div class="audio-message icon-hover">
+              <i class="fas fa-microphone"></i>
+            </div>
+          </div>
+          <!--  -->
+          <!--  -->
+        </div>
       </div>
     </div>
     <script src="js/vue.js"></script>
