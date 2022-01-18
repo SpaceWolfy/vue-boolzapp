@@ -19,17 +19,86 @@
   </head>
   <body>
     <div id="app">
-      <div v-for="(person, index) in contacts">
-        <!--Single User -->
-        <div class="user">
-          <!-- Avatar -->
-          <div class="avatar-cont">
-            <img :src="'img/'+ 'avatar' + person.avatar + '.jpg'" alt="" />
-          </div>
+      <!-- Header background green -->
+      <header class="header-bg"></header>
+      <!--  -->
 
-          <!-- Name -->
-          <div class="name">{{person.name}}</div>
+      <div class="app-container">
+        <div class="contacts">
+          <!-- Header my info -->
+          <header class="user-info">
+            <div class="my-info-cont">
+              <img src="img/avatar_8.jpg" alt="" class="personal-avatar" />
+              <div class="my-name">Samuel Scozzari</div>
+            </div>
+
+            <!-- Actions -->
+            <div class="my-actions">
+              <div class="my-action-icon">
+                <i class="fas fa-circle-notch"></i>
+              </div>
+              <div class="my-action-icon">
+                <i class="fas fa-comment-alt"></i>
+              </div>
+              <div class="my-action-icon">
+                <i class="fas fa-ellipsis-v"></i>
+              </div>
+            </div>
+            <!--  -->
+          </header>
+          <!--  -->
+
+          <!-- Attiva notifiche -->
+          <div class="notice-banner">
+            <div class="notice-btn">
+              <i class="fas fa-bell-slash"></i>
+            </div>
+            <div class="notice-text">
+              <div class="n-text-title">Ricevi notifiche di nuovi messaggi</div>
+              <div class="n-text-subt">Attiva notifiche desktop</div>
+            </div>
+          </div>
+          <!--  -->
+
+          <!-- Input -->
+          <div class="input-box">
+            <div class="icon-search">
+              <i class="fas fa-search"></i>
+            </div>
+            <input
+              class="search-a-contact"
+              type="text"
+              placeholder="Cerca o inizia una nuova chat"
+            />
+          </div>
+          <!--  -->
+
+          <!-- Contact-list -->
+          <div class="contact-list">
+            <div v-for="(person, index) in contacts">
+              <!--Single User -->
+              <div class="user">
+                <!-- Avatar -->
+                <div class="avatar-cont">
+                  <img
+                    :src="'img/'+ 'avatar' + person.avatar + '.jpg'"
+                    alt="contact-avatar"
+                    class="personal-avatar"
+                  />
+                </div>
+                <!--  -->
+
+                <!-- Name -->
+                <div class="contact-name">{{person.name}}</div>
+                <!--  -->
+              </div>
+              <!--  -->
+            </div>
+          </div>
+          <!--  -->
         </div>
+
+        <div class="display-chat"></div>
       </div>
     </div>
     <script src="js/vue.js"></script>

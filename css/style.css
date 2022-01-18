@@ -6,13 +6,167 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: #dadbd3;
 }
 
+#app {
+  height: 100vh;
+}
+
+/* User */
 .user {
   display: flex;
+  padding: 10px;
 }
 
-.user img {
-  width: 50px;
+.personal-avatar {
+  width: 45px;
   border-radius: 50%;
 }
+
+.contact-name {
+  margin-left: 20px;
+}
+
+.contact-name,
+.my-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+/* ---- */
+
+/* Header (background) */
+.header-bg {
+  height: 140px;
+  background-color: #009687;
+}
+/* ------------------- */
+
+/* App Container */
+.app-container {
+  width: 1200px;
+  background-color: #fafafa;
+  display: flex;
+  margin: 0 auto;
+  margin-top: -120px;
+}
+
+.contacts {
+  border-right: 0.01em solid #d7d6d6;
+}
+
+.display-chat {
+  width: 100%;
+}
+/* ------------- */
+
+/* Personal info */
+.user-info {
+  background-color: #e9eae9;
+  height: 65px;
+  display: flex;
+  width: 420px;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.my-actions {
+  display: flex;
+  margin-right: 10px;
+  font-size: 20px;
+  color: #b0b1b1;
+}
+
+.my-action-icon {
+  padding-left: 15px;
+}
+
+.my-info-cont {
+  display: flex;
+  align-items: center;
+}
+
+.my-name {
+  margin-left: 5px;
+}
+
+/* ------------- */
+
+/* Attiva notifiche */
+.notice-banner {
+  background-color: #8ddafc;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.notice-btn > i {
+  font-size: 20px;
+  color: #8ddafc;
+  background-color: white;
+  padding: 10px 8px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.n-text-subt,
+.n-text-title {
+  font-weight: 600;
+}
+
+.n-text-title {
+  font-size: 14px;
+}
+
+.n-text-subt {
+  padding-top: 5px;
+  font-size: 12px;
+  text-decoration: underline;
+  color: #5e8da3;
+}
+
+/* ---------------- */
+
+/* Input */
+.input-box {
+  display: flex;
+  padding: 5px;
+}
+
+.search-a-contact {
+  width: 100%;
+}
+
+.icon-search {
+  align-self: center;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.search-a-contact {
+  outline: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.icon-search,
+.search-a-contact {
+  padding: 10px;
+  border: none;
+  background-color: white;
+  color: #b8babc;
+  font-size: 12px;
+}
+
+/* ----- */
+
+/* Contact List */
+.contact-list {
+  margin-right: 10px;
+  border-right: 0.01em solid #e9ebec;
+  height: 720px;
+  background-color: white;
+}
+/* ------------ */
