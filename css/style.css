@@ -6,11 +6,13 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #dadbd3;
+  background: rgb(219, 219, 211);
+  background: linear-gradient(to bottom, #009688 15%, #dbdbd3 15%);
 }
 
 #app {
   height: 100vh;
+  overflow: hidden;
 }
 
 /* User */
@@ -35,20 +37,12 @@ body {
 }
 /* ---- */
 
-/* Header (background) */
-.header-bg {
-  height: 140px;
-  background-color: #009687;
-}
-/* ------------------- */
-
 /* App Container */
 .app-container {
   width: 1200px;
   background-color: #fafafa;
   display: flex;
-  margin: 0 auto;
-  margin-top: -120px;
+  margin: 20px auto;
 }
 
 .contacts {
