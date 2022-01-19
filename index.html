@@ -63,6 +63,7 @@
             </div>
             <input
               class="search-a-contact"
+              v-model="search"
               type="text"
               placeholder="Cerca o inizia una nuova chat"
             />
@@ -71,7 +72,7 @@
 
           <!-- Contact-list -->
           <div class="contact-list">
-            <div v-for="(person, index) in contacts">
+            <div v-for="(person, index) in filteredList">
               <!--Single User -->
               <div
                 class="user"

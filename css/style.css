@@ -165,10 +165,10 @@ body {
 
 /* Contact List */
 .contact-list {
-  margin-right: 10px;
   border-right: 0.01em solid #e9ebec;
   height: 720px;
   background-color: white;
+  overflow-y: auto;
 }
 /* ------------ */
 

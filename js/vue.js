@@ -91,10 +91,33 @@ new Vue({
           },
         ],
       },
+      {
+        name: "Fabiolo",
+        avatar: "_2",
+        visible: false,
+        messages: [
+          {
+            date: "20/03/2020 16:30:00",
+            text: "Ciao Fabiolo",
+            status: "sent",
+          },
+          {
+            date: "20/03/2020 16:30:55",
+            text: "Ciao Samuel",
+            status: "received",
+          },
+          {
+            date: "20/03/2020 16:35:00",
+            text: "Come sta Fabio?",
+            status: "sent",
+          },
+        ],
+      },
     ],
     sendAMsg: "",
     indexArray: [0],
     timer: null,
+    search: "",
   },
   methods: {
     /* Cliccando sul contatto specifico, questa funzione eguaglierà il mio contactIndex all'index cliccato, successivamente 
@@ -102,6 +125,8 @@ new Vue({
     mostraChat: function (index) {
       this.contactIndex = index;
       this.indexArray.push(this.contactIndex);
+      console.log(this.contactIndex);
+      console.log(this.indexArray);
     },
 
     /* Questa funzione gestisce un evento temporale, una volta richiamata 
@@ -143,6 +168,13 @@ new Vue({
     clickedUser: function (index) {
       this.contacts[index].visible = !this.contacts[index].visible;
       //TO DO
+    },
+  },
+  computed: {
+    filteredList() {
+      return this.contacts.filter((person) => {
+        return person.name.toLowerCase().includes(this.search.toLowerCase());
+      });
     },
   },
 });
