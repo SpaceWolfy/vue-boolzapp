@@ -72,12 +72,13 @@
 
           <!-- Contact-list -->
           <div class="contact-list">
-            <div v-for="(person, index) in filteredList">
+            <div v-for="(person, index) in contacts">
               <!--Single User -->
               <div
                 class="user"
                 @click="mostraChat(index), clickedUser(index)"
                 :class="{'clicked' : person.visible}"
+                v-if="findAPerson(person)"
               >
                 <!-- Avatar -->
                 <div class="avatar-cont">

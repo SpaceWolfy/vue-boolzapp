@@ -169,12 +169,15 @@ new Vue({
       this.contacts[index].visible = !this.contacts[index].visible;
       //TO DO
     },
-  },
-  computed: {
-    filteredList() {
-      return this.contacts.filter((person) => {
-        return person.name.toLowerCase().includes(this.search.toLowerCase());
-      });
+
+    findAPerson: function (person) {
+      if (
+        person.name.toLowerCase().startsWith(this.search) ||
+        this.search === ""
+      ) {
+        return true;
+      }
+      return false;
     },
   },
 });
