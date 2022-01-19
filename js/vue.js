@@ -164,20 +164,20 @@ new Vue({
       }
     },
 
+    /* Se il nome della persona che cerco inizia con le lettere inserite nell'input di ricerca
+    allora mostrami tale nome - true, altrimenti fai ritornare this.search === '' (Nulla) - false
+    */
+    findAPerson: function (person) {
+      if (person.name.toLowerCase().startsWith(this.search)) {
+        return true;
+      }
+      return false;
+    },
+
     /* Work in progress */
     clickedUser: function (index) {
       this.contacts[index].visible = !this.contacts[index].visible;
       //TO DO
-    },
-
-    findAPerson: function (person) {
-      if (
-        person.name.toLowerCase().startsWith(this.search) ||
-        this.search === ""
-      ) {
-        return true;
-      }
-      return false;
     },
   },
 });
