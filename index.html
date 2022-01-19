@@ -73,7 +73,7 @@
           <div class="contact-list">
             <div v-for="(person, index) in contacts">
               <!--Single User -->
-              <div class="user">
+              <div class="user" @click="mostraChat(index)">
                 <!-- Avatar -->
                 <div class="avatar-cont">
                   <img
@@ -98,9 +98,15 @@
           <!-- Header chat -->
           <header class="user-info">
             <div class="my-info-cont">
-              <img src="img/avatar_1.jpg" alt="" class="personal-avatar" />
+              <img
+                :src="'img/'+ 'avatar' + contacts[contactIndex].avatar + '.jpg'"
+                alt=""
+                class="personal-avatar"
+              />
               <div class="chat-info-person">
-                <div class="contact-name-chat">Michele</div>
+                <div class="contact-name-chat">
+                  {{contacts[contactIndex].name}}
+                </div>
                 <div class="last-access">Ultimo accesso oggi alle</div>
               </div>
             </div>
@@ -122,21 +128,24 @@
 
           <!-- Right Side Cont -->
           <div class="chat-container">
-            <div class="in-chat">
-              <div class="right-side">
+            <div
+              class="in-chat"
+              v-for="(message, index) in contacts[contactIndex].messages "
+            >
+              <div class="right-side" v-if='message.status === "sent"'>
                 <div class="msg-green">
-                  Ciao sono Samuel
-                  <div class="date">19/01/22 - 00:12</div>
-                </div>
-                <div class="msg-green">
-                  Come stai?
-                  <div class="date">19/01/22 - 00:12</div>
+                  {{contacts[contactIndex].messages[index].text}}
+                  <div class="date">
+                    {{contacts[contactIndex].messages[index].date}}
+                  </div>
                 </div>
               </div>
-              <div class="left-side">
+              <div class="left-side" v-else>
                 <div class="msg-white">
-                  Ciao Samuel, sono Mich, sto bene! Tu invece?
-                  <div class="date">19/01/22 - 00:12</div>
+                  {{contacts[contactIndex].messages[index].text}}
+                  <div class="date">
+                    {{contacts[contactIndex].messages[index].date}}
+                  </div>
                 </div>
               </div>
             </div>

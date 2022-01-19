@@ -1,6 +1,7 @@
 new Vue({
   el: "#app",
   data: {
+    contactIndex: 0,
     contacts: [
       {
         name: "Michele",
@@ -91,5 +92,11 @@ new Vue({
         ],
       },
     ],
+  },
+  methods: {
+    mostraChat: function (index) {
+      this.contactIndex = index;
+      console.log(this.contactIndex);
+    },
   },
 });
