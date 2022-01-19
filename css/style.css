@@ -259,3 +259,7 @@ body {
   color: #7a8184;
 }
 /* ----- */
+
+.clicked {
+  background-color: #e8ebeb;
+}

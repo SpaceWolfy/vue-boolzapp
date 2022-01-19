@@ -73,7 +73,11 @@
           <div class="contact-list">
             <div v-for="(person, index) in contacts">
               <!--Single User -->
-              <div class="user" @click="mostraChat(index)">
+              <div
+                class="user"
+                @click="mostraChat(index), clickedUser(index)"
+                :class="{'clicked' : person.visible}"
+              >
                 <!-- Avatar -->
                 <div class="avatar-cont">
                   <img
@@ -159,6 +163,8 @@
               class="message-text"
               type="text"
               placeholder="Scrivi un messaggio"
+              v-model="sendAMsg"
+              @keyup.enter="invioUnMex"
             />
             <div class="audio-message icon-hover">
               <i class="fas fa-microphone"></i>
