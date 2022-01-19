@@ -76,8 +76,8 @@
               <!--Single User -->
               <div
                 class="user"
-                @click="mostraChat(index), clickedUser(index)"
-                :class="{'clicked' : person.visible}"
+                @click="mostraChat(index), selected = index"
+                :class="{clicked:selected == index}"
                 v-if="findAPerson(person)"
               >
                 <!-- Avatar -->

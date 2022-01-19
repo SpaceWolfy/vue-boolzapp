@@ -118,6 +118,7 @@ new Vue({
     indexArray: [0],
     timer: null,
     search: "",
+    selected: undefined,
   },
   methods: {
     /* Cliccando sul contatto specifico, questa funzione eguaglierà il mio contactIndex all'index cliccato, successivamente 
@@ -175,9 +176,9 @@ new Vue({
     },
 
     /* Work in progress */
-    clickedUser: function (index) {
+    /*  clickedUser: function (index) {
       this.contacts[index].visible = !this.contacts[index].visible;
       //TO DO
-    },
+    }, */
   },
 });
