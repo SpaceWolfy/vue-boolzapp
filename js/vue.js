@@ -6,7 +6,7 @@ new Vue({
       {
         name: "Michele",
         avatar: "_1",
-        visible: true,
+        visible: false,
         messages: [
           {
             date: "10/01/2020 15:30:55",
@@ -50,21 +50,21 @@ new Vue({
       {
         name: "Samuele",
         avatar: "_3",
-        visible: false,
+        visible: true,
         messages: [
           {
-            date: "10/01/2020 15:30:55",
-            text: "Hai portato a spasso il cane?",
+            date: "28/03/2020 10:10:40",
+            text: "La Marianna va in campagna",
+            status: "received",
+          },
+          {
+            date: "28/03/2020 10:20:10",
+            text: "Sicuro di non aver sbagliato chat?",
             status: "sent",
           },
           {
-            date: "10/01/2020 15:50:00",
-            text: "Ricordati di dargli da mangiare",
-            status: "sent",
-          },
-          {
-            date: "10/01/2020 16:15:22",
-            text: "Tutto fatto!",
+            date: "28/03/2020 16:15:22",
+            text: "Ah scusa!",
             status: "received",
           },
         ],
@@ -72,21 +72,16 @@ new Vue({
       {
         name: "Luisa",
         avatar: "_6",
-        visible: false,
+        visible: true,
         messages: [
           {
             date: "10/01/2020 15:30:55",
-            text: "Hai portato a spasso il cane?",
+            text: "Lo sai che ha aperto una nuova pizzeria?",
             status: "sent",
           },
           {
             date: "10/01/2020 15:50:00",
-            text: "Ricordati di dargli da mangiare",
-            status: "sent",
-          },
-          {
-            date: "10/01/2020 16:15:22",
-            text: "Tutto fatto!",
+            text: "Si, ma preferirei andare al cinema",
             status: "received",
           },
         ],
@@ -114,6 +109,7 @@ new Vue({
         ],
       },
     ],
+    yesOrNo: ["si", "no"],
     sendAMsg: "",
     indexArray: [0],
     timer: null,
@@ -121,23 +117,28 @@ new Vue({
     selected: undefined,
   },
   methods: {
+    avatarPic: function (person) {
+      return `img/avatar${person.avatar}.jpg`;
+    },
+
     /* Cliccando sul contatto specifico, questa funzione eguaglierà il mio contactIndex all'index cliccato, successivamente 
     lo pusherà in un array nel quale sarà immagazzinato  */
     mostraChat: function (index) {
       this.contactIndex = index;
       this.indexArray.push(this.contactIndex);
-      console.log(this.contactIndex);
-      console.log(this.indexArray);
     },
 
     /* Questa funzione gestisce un evento temporale, una volta richiamata 
-    garantirà il ricevimento di un messaggio da parte dell'altro utente nell'arco di un secondo */
+    garantirà il ricevimento di un messaggio randomico da parte dell'altro utente nell'arco di un secondo */
     ricevoUnMessaggio: function () {
       this.timer = setTimeout(() => {
+        const randomAnswer =
+          Math.floor(Math.random() * this.yesOrNo.length - 1) + 1;
         this.contacts[this.indexArray.slice(-1)].messages.push({
-          date: "ora",
-          text: "Ok",
+          date: this.getTodayDate(),
+          text: this.yesOrNo[randomAnswer],
           status: "received",
+          return: this.getTodayDate,
         });
       }, 1000);
     },
@@ -156,7 +157,7 @@ new Vue({
         alert("Prima di inviare, inserisci qualcosa!");
       } else {
         this.contacts[this.indexArray.slice(-1)].messages.push({
-          date: "ora",
+          date: this.getTodayDate(),
           text: upperCItem,
           status: "sent",
         });
@@ -165,8 +166,12 @@ new Vue({
       }
     },
 
+    getTodayDate: function () {
+      return dayjs().format("DD/MM/YYYY HH:mm:ss");
+    },
+
     /* Se il nome della persona che cerco inizia con le lettere inserite nell'input di ricerca
-    allora mostrami tale nome - true, altrimenti fai ritornare this.search === '' (Nulla) - false
+    allora mostrami tale nome - true, altrimenti ritornami con false
     */
     findAPerson: function (person) {
       if (person.name.toLowerCase().startsWith(this.search)) {
@@ -174,11 +179,5 @@ new Vue({
       }
       return false;
     },
-
-    /* Work in progress */
-    /*  clickedUser: function (index) {
-      this.contacts[index].visible = !this.contacts[index].visible;
-      //TO DO
-    }, */
   },
 });
