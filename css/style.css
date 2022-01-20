@@ -15,13 +15,86 @@ body {
   overflow: hidden;
 }
 
+/* Global classes */
+.font-w600 {
+  font-weight: 600;
+}
+
+i {
+  cursor: pointer;
+}
+
+.action-on-icon {
+  padding-left: 15px;
+}
+
+.outline-none {
+  outline: none;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.b-none {
+  border: none;
+}
+
+.f-size20 {
+  font-size: 20px;
+}
+/* ------------ */
+
+/* App Container */
+.app-container {
+  width: 1200px;
+  height: 900px;
+  background-color: #fafafa;
+  margin: 20px auto;
+}
+
+.contacts {
+  border-right: 0.01em solid #d7d6d6;
+  width: 35%;
+}
+
+.display-chat {
+  background-color: tomato;
+  width: 65%;
+}
+/* ------------- */
+
+/* Personal info */
+.user-info {
+  background-color: #e9eae9;
+  height: 65px;
+  width: 100%;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.possible-actions {
+  margin-right: 10px;
+  color: #b0b1b1;
+}
+
+.info-cont {
+  align-items: center;
+}
+
+.my-name {
+  margin-left: 5px;
+}
+
+/* ------------- */
+
 /* User */
 .user {
-  display: flex;
   padding: 10px 20px;
 }
 
-.personal-avatar {
+.contact-avatar {
   width: 45px;
   border-radius: 50%;
 }
@@ -33,75 +106,18 @@ body {
 [class*="contact-name"],
 .my-name {
   font-size: 15px;
-  font-weight: 600;
 }
 /* ---- */
-
-/* App Container */
-.app-container {
-  width: 1200px;
-  background-color: #fafafa;
-  display: flex;
-  margin: 20px auto;
-}
-
-.contacts {
-  border-right: 0.01em solid #d7d6d6;
-  width: 600px;
-}
-
-.display-chat {
-  background-color: tomato;
-  height: 900px;
-  width: 100%;
-}
-/* ------------- */
-
-/* Personal info */
-.user-info {
-  background-color: #e9eae9;
-  height: 65px;
-  display: flex;
-  width: 100%;
-  padding: 10px;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.my-actions {
-  display: flex;
-  margin-right: 10px;
-  font-size: 20px;
-  color: #b0b1b1;
-}
-
-.my-action-icon {
-  padding-left: 15px;
-}
-
-.my-info-cont {
-  display: flex;
-  align-items: center;
-}
-
-.my-name {
-  margin-left: 5px;
-}
-
-/* ------------- */
 
 /* Attiva notifiche */
 .notice-banner {
   background-color: #8ddafc;
   height: 70px;
-  display: flex;
   align-items: center;
   padding-left: 20px;
-  cursor: pointer;
 }
 
-.notice-btn > i {
-  font-size: 20px;
+.notice-btn {
   color: #8ddafc;
   background-color: white;
   padding: 10px 8px;
@@ -109,10 +125,8 @@ body {
   margin-right: 10px;
 }
 
-.n-text-subt,
-.n-text-title,
-.last-access {
-  font-weight: 600;
+.notice-text {
+  cursor: pointer;
 }
 
 .n-text-title {
@@ -134,7 +148,6 @@ body {
 
 /* Input */
 .input-box {
-  display: flex;
   padding: 5px;
 }
 
@@ -147,7 +160,6 @@ body {
 
 .search-a-contact {
   width: 100%;
-  outline: none;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   padding-left: 5px;
@@ -156,7 +168,6 @@ body {
 .icon-search,
 .search-a-contact {
   padding: 10px;
-  border: none;
   background-color: white;
   font-size: 12px;
 }
@@ -166,7 +177,8 @@ body {
 /* Contact List */
 .contact-list {
   border-right: 0.01em solid #e9ebec;
-  height: 720px;
+  border-bottom: 0.01em solid #e9ebec;
+  height: 80%;
   background-color: white;
   overflow-y: auto;
 }
@@ -190,26 +202,28 @@ body {
 }
 
 .right-side {
-  display: flex;
   align-items: flex-end;
   flex-direction: column;
 }
 
-.msg-green,
-.msg-white {
+.single-message::after {
+  display: table;
+  content: "";
+  clear: both;
+}
+
+.message-item {
   margin: 20px;
   width: max-content;
   padding: 12px;
   border-radius: 10px;
+  background-color: #ffffff;
 }
 
-.msg-green {
+.single-message.sent > .message-item {
   background-color: #d6f9ba;
   text-align: end;
-}
-
-.msg-white {
-  background-color: #ffffff;
+  float: right;
 }
 
 .date {
@@ -224,7 +238,6 @@ body {
 /* Message Bar */
 .message-bar {
   height: calc(100% - 835px);
-  display: flex;
   background-color: #f3eee8;
   justify-content: space-around;
   align-items: center;
@@ -233,8 +246,6 @@ body {
 .message-text {
   height: 50px;
   width: 100%;
-  outline: none;
-  border: none;
   border-radius: 5px;
   padding-left: 15px;
 }
@@ -242,7 +253,6 @@ body {
 .audio-message,
 .emojis {
   margin: 0 30px;
-  font-size: 23px;
   color: #6a7376;
 }
 
@@ -257,6 +267,14 @@ body {
 
 .icon-hover:hover {
   color: #7a8184;
+}
+
+.audio-message:hover {
+  color: rgb(136, 16, 16);
+}
+
+.emojis:hover {
+  color: rgb(192, 169, 41);
 }
 /* ----- */
 

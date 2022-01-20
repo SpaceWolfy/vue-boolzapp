@@ -14,29 +14,33 @@
       integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
       crossorigin="anonymous"
     />
+
+    <!-- Day.JS - Libreria -->
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+
     <!-- Vue.JS - Sviluppatori  -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   </head>
   <body>
     <div id="app">
-      <div class="app-container">
+      <div class="app-container d-flex">
         <div class="contacts">
           <!-- Header my info -->
-          <header class="user-info">
-            <div class="my-info-cont">
-              <img src="img/avatar_8.jpg" alt="" class="personal-avatar" />
+          <header class="user-info d-flex">
+            <div class="info-cont d-flex">
+              <img src="img/avatar_8.jpg" alt="" class="contact-avatar" />
               <div class="my-name">Samuel Scozzari</div>
             </div>
 
             <!-- Actions -->
-            <div class="my-actions">
-              <div class="my-action-icon icon-hover">
+            <div class="possible-actions d-flex f-size20">
+              <div class="action-on-icon icon-hover">
                 <i class="fas fa-circle-notch"></i>
               </div>
-              <div class="my-action-icon icon-hover">
+              <div class="action-on-icon icon-hover">
                 <i class="fas fa-comment-alt"></i>
               </div>
-              <div class="my-action-icon icon-hover">
+              <div class="action-on-icon icon-hover">
                 <i class="fas fa-ellipsis-v"></i>
               </div>
             </div>
@@ -45,24 +49,26 @@
           <!--  -->
 
           <!-- Attiva notifiche -->
-          <div class="notice-banner">
-            <div class="notice-btn">
-              <i class="fas fa-bell-slash"></i>
+          <div class="notice-banner d-flex">
+            <div>
+              <i class="fas fa-bell-slash notice-btn f-size20"></i>
             </div>
             <div class="notice-text">
-              <div class="n-text-title">Ricevi notifiche di nuovi messaggi</div>
-              <div class="n-text-subt">Attiva notifiche desktop</div>
+              <div class="n-text-title font-w600">
+                Ricevi notifiche di nuovi messaggi
+              </div>
+              <div class="n-text-subt font-w600">Attiva notifiche desktop</div>
             </div>
           </div>
           <!--  -->
 
           <!-- Input -->
-          <div class="input-box">
-            <div class="icon-search">
+          <div class="input-box d-flex">
+            <div class="icon-search b-none">
               <i class="fas fa-search"></i>
             </div>
             <input
-              class="search-a-contact"
+              class="search-a-contact outline-none b-none"
               v-model="search"
               type="text"
               placeholder="Cerca o inizia una nuova chat"
@@ -75,23 +81,23 @@
             <div v-for="(person, index) in contacts">
               <!--Single User -->
               <div
-                class="user"
+                class="user d-flex"
                 @click="mostraChat(index), selected = index"
                 :class="{clicked:selected == index}"
                 v-if="findAPerson(person)"
               >
                 <!-- Avatar -->
-                <div class="avatar-cont">
+                <div>
                   <img
-                    :src="'img/'+ 'avatar' + person.avatar + '.jpg'"
+                    :src="avatarPic(person)"
                     alt="contact-avatar"
-                    class="personal-avatar"
+                    class="contact-avatar"
                   />
                 </div>
                 <!--  -->
 
                 <!-- Name -->
-                <div class="contact-name">{{person.name}}</div>
+                <div class="contact-name font-w600">{{person.name}}</div>
                 <!--  -->
               </div>
               <!--  -->
@@ -102,30 +108,32 @@
 
         <div class="display-chat">
           <!-- Header chat -->
-          <header class="user-info">
-            <div class="my-info-cont">
+          <header class="user-info d-flex">
+            <div class="info-cont d-flex">
               <img
                 :src="'img/'+ 'avatar' + contacts[contactIndex].avatar + '.jpg'"
                 alt=""
-                class="personal-avatar"
+                class="contact-avatar"
               />
               <div class="chat-info-person">
-                <div class="contact-name-chat">
+                <div class="contact-name-chat font-w600">
                   {{contacts[contactIndex].name}}
                 </div>
-                <div class="last-access">Ultimo accesso oggi alle</div>
+                <div class="last-access font-w600">
+                  Ultimo accesso oggi alle
+                </div>
               </div>
             </div>
 
             <!-- Actions - chat -->
-            <div class="my-actions">
-              <div class="my-action-icon icon-hover">
+            <div class="possible-actions d-flex f-size20">
+              <div class="action-on-icon icon-hover">
                 <i class="fas fa-search"></i>
               </div>
-              <div class="my-action-icon icon-hover">
+              <div class="action-on-icon icon-hover">
                 <i class="fas fa-paperclip"></i>
               </div>
-              <div class="my-action-icon icon-hover">
+              <div class="action-on-icon icon-hover">
                 <i class="fas fa-ellipsis-v"></i>
               </div>
             </div>
@@ -133,42 +141,32 @@
           </header>
 
           <!-- Right Side Cont -->
+
           <div class="chat-container">
             <div
-              class="in-chat"
-              v-for="(message, index) in contacts[contactIndex].messages "
+              class="single-message"
+              v-for="message in contacts[contactIndex].messages"
+              :class="message.status"
             >
-              <div class="right-side" v-if='message.status === "sent"'>
-                <div class="msg-green">
-                  {{contacts[contactIndex].messages[index].text}}
-                  <div class="date">
-                    {{contacts[contactIndex].messages[index].date}}
-                  </div>
-                </div>
-              </div>
-              <div class="left-side" v-else>
-                <div class="msg-white">
-                  {{contacts[contactIndex].messages[index].text}}
-                  <div class="date">
-                    {{contacts[contactIndex].messages[index].date}}
-                  </div>
-                </div>
+              <div class="message-item">
+                {{message.text}}
+                <div class="date">{{message.date}}</div>
               </div>
             </div>
           </div>
-          <!-- Message -->
-          <div class="message-bar">
-            <div class="emojis icon-hover">
+
+          <div class="message-bar d-flex">
+            <div class="emojis f-size20">
               <i class="far fa-smile"></i>
             </div>
             <input
-              class="message-text"
+              class="message-text outline-none b-none"
               type="text"
               placeholder="Scrivi un messaggio"
               v-model="sendAMsg"
               @keyup.enter="invioUnMex"
             />
-            <div class="audio-message icon-hover">
+            <div class="audio-message f-size20">
               <i class="fas fa-microphone"></i>
             </div>
           </div>
