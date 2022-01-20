@@ -233,6 +233,23 @@ i {
   color: #bbc3bb;
 }
 
+.fa-chevron-down {
+  color: #b0b1b1;
+  padding-left: 5px;
+  font-size: 14px;
+}
+
+.menu {
+  display: none;
+  height: 100px;
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.show-menu {
+  display: inline-block;
+}
 /* -------------- */
 
 /* Message Bar */

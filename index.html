@@ -29,7 +29,7 @@
           <header class="user-info d-flex">
             <div class="info-cont d-flex">
               <img src="img/avatar_8.jpg" alt="" class="contact-avatar" />
-              <div class="my-name">Samuel Scozzari</div>
+              <div class="my-name font-w600">Samuel Scozzari</div>
             </div>
 
             <!-- Actions -->
@@ -120,7 +120,7 @@
                   {{contacts[contactIndex].name}}
                 </div>
                 <div class="last-access font-w600">
-                  Ultimo accesso oggi alle
+                  Ultimo accesso: {{getTodayDate()}}
                 </div>
               </div>
             </div>
@@ -145,12 +145,22 @@
           <div class="chat-container">
             <div
               class="single-message"
-              v-for="message in contacts[contactIndex].messages"
+              v-for="(message, index) in contacts[contactIndex].messages"
               :class="message.status"
             >
               <div class="message-item">
                 {{message.text}}
+                <i class="fas fa-chevron-down" @click="menuPopUp()"></i>
                 <div class="date">{{message.date}}</div>
+              </div>
+
+              <div class="menu" :class="showMenu">
+                <div>Mostra info messaggio</div>
+                <div
+                  @click="cancellaMessaggio(contacts[contactIndex].messages, index)"
+                >
+                  Cancella il messaggio
+                </div>
               </div>
             </div>
           </div>
