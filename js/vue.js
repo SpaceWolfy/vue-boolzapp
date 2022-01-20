@@ -108,6 +108,18 @@ new Vue({
           },
         ],
       },
+      {
+        name: "L'onnipotente 8-Ball",
+        avatar: "_ball",
+        visible: false,
+        messages: [
+          {
+            date: "Prima, ora, più avanti",
+            text: "Saluti umano! Sono l'onnipotente 8-Ball, chiedi e risponderò.",
+            status: "received",
+          },
+        ],
+      },
     ],
     yesOrNo: ["si", "no"],
     sendAMsg: "",
@@ -132,15 +144,19 @@ new Vue({
     garantirà il ricevimento di un messaggio randomico da parte dell'altro utente nell'arco di un secondo */
     ricevoUnMessaggio: function () {
       this.timer = setTimeout(() => {
-        const randomAnswer =
-          Math.floor(Math.random() * this.yesOrNo.length - 1) + 1;
-        this.contacts[this.indexArray.slice(-1)].messages.push({
-          date: this.getTodayDate(),
-          text: this.yesOrNo[randomAnswer],
-          status: "received",
-          return: this.getTodayDate,
-        });
+        this.rispostaAuto();
       }, 1000);
+    },
+
+    /* Preleva un messaggio randomico dall'array yesOrNo e lo pusha seguendo la struttura ad oggetti all'interno dell'array messagges relativo all'user selezionato */
+    rispostaAuto: function () {
+      const randomAnswer =
+        Math.floor(Math.random() * this.yesOrNo.length - 1) + 1;
+      this.contacts[this.indexArray.slice(-1)].messages.push({
+        date: this.getTodayDate(),
+        text: this.yesOrNo[randomAnswer],
+        status: "received",
+      });
     },
 
     /* Questa funzione rende maiuscola la prima lettera del testo prelevato dall'input - message-text dell'html 
