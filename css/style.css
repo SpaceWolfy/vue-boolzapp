@@ -241,10 +241,15 @@ i {
 
 .menu {
   display: none;
-  height: 100px;
   width: 200px;
   text-align: center;
   cursor: pointer;
+  background-color: #ffffff;
+}
+
+.menu > div {
+  padding: 5px;
+  border: 1px solid #e9e6e6;
 }
 
 .show-menu {

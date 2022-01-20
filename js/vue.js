@@ -126,7 +126,6 @@ new Vue({
     indexArray: [0],
     timer: null,
     search: "",
-    showMenu: "",
     selected: undefined,
   },
   methods: {
@@ -202,13 +201,5 @@ new Vue({
       return this.contacts[this.indexArray.slice(-1)].messages.slice(-1);
       to do
     }, */
-
-    menuPopUp: function () {
-      this.showMenu = "show-menu";
-    },
-
-    cancelMsg: function (contactMsg, index) {
-      contactMsg.splice(index, 1);
-    },
   },
 });

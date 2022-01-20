@@ -145,22 +145,13 @@
           <div class="chat-container">
             <div
               class="single-message"
-              v-for="(message, index) in contacts[contactIndex].messages"
+              v-for="message in contacts[contactIndex].messages"
               :class="message.status"
             >
               <div class="message-item">
                 {{message.text}}
-                <i class="fas fa-chevron-down" @click="menuPopUp()"></i>
+                <i class="fas fa-chevron-down"></i>
                 <div class="date">{{message.date}}</div>
-              </div>
-
-              <div class="menu" :class="showMenu">
-                <div>Mostra info messaggio</div>
-                <div
-                  @click="cancellaMessaggio(contacts[contactIndex].messages, index)"
-                >
-                  Cancella il messaggio
-                </div>
               </div>
             </div>
           </div>
