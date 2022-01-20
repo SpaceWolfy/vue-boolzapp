@@ -197,9 +197,5 @@ new Vue({
       }
       return false;
     },
-    /*     userLastMsg: function () {
-      return this.contacts[this.indexArray.slice(-1)].messages.slice(-1);
-      to do
-    }, */
   },
 });
