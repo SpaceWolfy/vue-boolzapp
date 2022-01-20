@@ -129,6 +129,7 @@ new Vue({
     selected: undefined,
   },
   methods: {
+    //Imposta l'immagine di profilo degli avatar nella lista contatti
     avatarPic: function (person) {
       return `img/avatar${person.avatar}.jpg`;
     },
@@ -182,6 +183,7 @@ new Vue({
       }
     },
 
+    //Riporta l'esatta data di un evento avvenuto (quando chiamata)
     getTodayDate: function () {
       return dayjs().format("DD/MM/YYYY HH:mm:ss");
     },
